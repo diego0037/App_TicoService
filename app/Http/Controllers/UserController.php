@@ -112,8 +112,8 @@ class UserController extends Controller
         }
 
         $this->setSession($request);
-           $name = 'byron testing view';
-           return redirect('/');
+
+        return redirect('/');
         // return response()->json([
         //     'token' => $token
         // ], 200);

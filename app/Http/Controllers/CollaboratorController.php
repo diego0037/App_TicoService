@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Collaborator;
+use App\User;
+use App\Service;
 use JWTAuth;
 use Illuminate\Http\Request;
 
@@ -16,10 +18,17 @@ class CollaboratorController extends Controller
     public function index()
     {
         $collaborators = Collaborator::all();
-        $response = [
-            'collaborators' => $collaborators
-        ];
-        return response()->json($response,200);
+        // $response = [
+        //     'collaborators' => $collaborators
+        // ];
+        // return response()->json($response,200);
+        foreach ($collaborators as $key) {
+          $user = User::find($key->id_user);
+          $key->user = $user->name;
+          $service = Service::find($key->id_service);
+          $key->service = $service->name;
+        }
+        return view('PaginasWeb.colaboradores')->with('collaborators', $collaborators);
     }
 
     /**
@@ -49,10 +58,17 @@ class CollaboratorController extends Controller
     public function show($id)
     {
         $collaborator = Collaborator::find($id);
-        if(!$collaborator){
-            return response()->json(['message' => 'Colaborador no existente'], 404);
-        }
-        return response()->json($collaborator,200);
+        $user = User::find($collaborator->id_user);
+        $service = Service::find($collaborator->id_service);
+        $collaborator->name = $user->name;
+        $collaborator->last_name = $user->last_name;
+        $collaborator->service = $service->name;
+        // if(!$collaborator){
+        //     return response()->json(['message' => 'Colaborador no existente'], 404);
+        // }
+        // return response()->json($collaborator,200);
+        return view('PaginasWeb.colaborador', ['collaborator' => $collaborator]);
+        // ->with('colaborator', $collaborator);
     }
 
     /**
