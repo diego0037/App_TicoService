@@ -32,3 +32,7 @@ Route::get('login', function(){
 Route::get('busqueda', function(){
       return view('PaginasWeb.busqueda');
 });
+
+Route::get('collaborator', function(){
+      return view('PaginasWeb.colaborador');
+});
