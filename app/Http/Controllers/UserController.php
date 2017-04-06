@@ -110,7 +110,9 @@ class UserController extends Controller
             //   'code'=>422,'message'=>'Verifique su bandeja de correos para activar su cuenta.Su cuenta no esta activa'])],422);
             flash('Verifique su bandeja de correos para activar su cuenta.Su cuenta no esta activa' ,'danger');
             return view('PaginasWeb.login');
+
         }
+        
         $this->setSession($request);
         $request->session()->put('token',$token);
            return redirect('/');
