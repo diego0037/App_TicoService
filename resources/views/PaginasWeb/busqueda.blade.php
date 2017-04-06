@@ -4,6 +4,8 @@
 <link rel="stylesheet" href="{!! asset('css/paginaPrin.css') !!}">
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 
+
+
 @section('content')
 
 
@@ -19,12 +21,22 @@
     </ul>
 
     <ul class="nav navbar-nav navbar-right">
+
+      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="">Page 1 <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="{{ url('registroServicio') }}">Registrarme un Servicio</a></li>
+          <li><a href="#">Page 1-2</a></li>
+          <li><a href="#">Page 1-3</a></li>
+        </ul>
+      </li>
+
        <li id="register"><a href="{{ url('registro') }}">
-         <span class="glyphicon glyphicon-user"></span>{{ isset($name) ? $name : 'Registrarse' }}</a></li>
+         <span class="glyphicon glyphicon-user"></span> {{ isset($name) ? $name : 'Registrarse' }}</a></li>
       <li><a href="{{ url('login') }}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
     </ul>
   </div>
 </nav>
+
 
 {{ Form::open(array('url' => 'api/user/login', 'method' => 'POST'), array('role' => 'form')) }}
 <div class="row">
@@ -122,7 +134,6 @@
     </div>
 </div>
 </div>
-
 
 
 @endsection

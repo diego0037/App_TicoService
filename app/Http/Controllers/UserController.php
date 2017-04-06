@@ -12,6 +12,7 @@ use DB;
 use Mail;
 use View;
 
+
 class UserController extends Controller
 {
 
@@ -110,9 +111,8 @@ class UserController extends Controller
             flash('Verifique su bandeja de correos para activar su cuenta.Su cuenta no esta activa' ,'danger');
             return view('PaginasWeb.login');
         }
-
         $this->setSession($request);
-           $name = 'byron testing view';
+        $request->session()->put('token',$token);
            return redirect('/');
         // return response()->json([
         //     'token' => $token

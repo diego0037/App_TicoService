@@ -20,6 +20,9 @@ Route::get('/', function () {
 Route::get('/user/activation/{token}',
 'UserController@userActivation');
 
+Route::get('registroServicio', function(){
+      return view('PaginasWeb.registroServicio', ['token' => session('token')]);
+});
 
 Route::get('registro', function(){
       return view('PaginasWeb.registro');
