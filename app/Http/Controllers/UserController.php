@@ -42,6 +42,7 @@ class UserController extends Controller
 
     protected function create(array $data)
     {
+      dd($data);
         return User::create([
             'name' => $data['name'],
             'last_name' => $data['last_name'],
@@ -54,6 +55,7 @@ class UserController extends Controller
 
     public function store(Request $request)
     {
+      dd($request);
         $input = $request->all();
         $validator = $this->validatorSto($input);
 

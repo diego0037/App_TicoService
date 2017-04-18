@@ -4,8 +4,13 @@ namespace App\Http\Controllers\Auth;
 
 use App\User;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Validator;
+use Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use DB;
+use Mail;
+use View;
+use Illuminate\Http\Request;
+
 
 class RegisterController extends Controller
 {
@@ -48,10 +53,11 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => 'required|max:255',
-            'email' => 'required|email|max:255|unique:users',
-            'password' => 'required|min:6|confirmed',
-        ]);
+          'name' => 'required|max:255',
+          'last_name' => 'required',
+          'email' => 'required|email|max:255|unique:users',
+          'password' => 'required|min:6|confirmed',
+      ]);
     }
 
     /**
@@ -62,10 +68,27 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $user = User::create([
             'name' => $data['name'],
+            'last_name' => $data['last_name'],
+            'phone' => $data['phone'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
+        dd($user);
+        $user['link'] = str_random(30);
+
+        DB::table('user_activation')->insert(['id_user'=>$user['id'],'token'=>$user['link']]);
+        Mail::send('emails.activation', $user, function($message) use ($user){
+            $message->to($user['email']);
+            $message->subject('Active su Cuenta para Finalizar su Registro en nuestra Aplicación');
+        });
+
+        // return response()->json([
+        //     'message' => 'Usuario creado exitosamente'
+        // ], 200);
+
+        flash('Usuario creado exitosamente! Verifique su bandeja de Correos','success');
+        return view('login');
     }
 }

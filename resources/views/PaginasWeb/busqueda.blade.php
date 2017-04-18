@@ -6,26 +6,6 @@
 
 @section('content')
 
-
-<nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#">TicoService</a>
-    </div>
-
-    <ul class="nav navbar-nav">
-      <li class="active"><a href="#"><span class="glyphicon glyphicon-home"></span></a></li>
-
-    </ul>
-
-    <ul class="nav navbar-nav navbar-right">
-       <li id="register"><a href="{{ url('registro') }}">
-         <span class="glyphicon glyphicon-user"></span>{{ isset($name) ? $name : 'Registrarse' }}</a></li>
-      <li><a href="{{ url('login') }}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-    </ul>
-  </div>
-</nav>
-
 {{ Form::open(array('url' => 'api/user/login', 'method' => 'POST'), array('role' => 'form')) }}
 <div class="row">
 <div class="form-group  col-md-offset-3 col-md-4 ">
@@ -46,12 +26,11 @@
       <div class="inner cover">
         <h1 class="cover-heading">TicoService</h1>
 
-        <p class="lead">Tico Service es una aplicacion que te permite buscar
-          el servicio que desee, ademas Tico Service te permite publicar tus
-          servicios para que otras personas puedan ver tu servicio y poder
-          contactarte, ademas tu vas a poder comentar a la persona que te brindo
-          el servicio para que otras personas puedan saber como es esa persona
-          brindando el servicio
+        <p class="lead">Tico Service es una aplicación que te permite buscar
+          el servicio que desees, además, Tico Service te permite publicar tus
+          servicios para que otras personas puedan contactarte, también ten en
+          cuenta que vas a poder comentar a la persona que te brindó
+          el servicio para que otras personas puedan obtener cierta referencia
         </p>
 
       </div>
