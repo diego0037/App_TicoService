@@ -21,13 +21,13 @@ Route::get('/user/activation/{token}',
 'UserController@userActivation');
 
 
-Route::get('registro', function(){
-      return view('PaginasWeb.registro');
-});
-
-Route::get('login', function(){
-      return view('PaginasWeb.login');
-});
+// Route::get('registro', function(){
+//       return view('PaginasWeb.registro');
+// });
+//
+// Route::get('login2', function(){
+//       return view('PaginasWeb.login');
+// });
 
 Route::get('busqueda', function(){
       return view('PaginasWeb.busqueda');
@@ -36,3 +36,11 @@ Route::get('busqueda', function(){
 Route::get('collaborator', function(){
       return view('PaginasWeb.colaborador');
 });
+
+Route::get('registroServicio', function(){
+      return view('PaginasWeb.registroServicio', ['token' => session('token')]);
+});
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');

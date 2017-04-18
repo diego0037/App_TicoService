@@ -17,7 +17,7 @@
   </div>
 </nav>
 
-{{ Form::open(array('url' => 'api/user', 'method' => 'POST'), array('role' => 'form')) }}
+{{ Form::open(array('action' => 'register', 'method' => 'POST'), array('role' => 'form')) }}
 <div class="row">
 <div class="form-group  col-md-offset-4 col-md-4 col-md-offset-4">
   {{ Form::label('name', 'Nombre') }}
@@ -63,7 +63,7 @@
 <div class="row">
 <div class="form-group col-md-offset-4 col-md-4 col-md-offset-4">
 @include('flash::message')
-{{ Form::button('Registarme', array('type' => 'submit', 'class' => 'btn btn-primary')) }}
+{{ Form::button('Registrarme', array('type' => 'submit', 'class' => 'btn btn-primary')) }}
 </div>
 </div>
 
