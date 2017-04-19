@@ -1,7 +1,6 @@
 html,
 body {
-
-  background-image: url(/image/font.jpg) no-repeat center center fixed;
+  background: url(../image/font.jpg) no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -13,6 +12,66 @@ body {
   text-align: center;
   text-shadow: 0 1px 3px rgba(0,0,0,.5);
 
+}
+
+#navBarPrincipal
+{
+  margin-bottom: 0pc;
+}
+
+#inputBusqueda
+{
+  margin-top: 8px;
+  margin-left: 19px;
+}
+
+#btnBusqueda
+{
+  margin-top: 8px;
+  margin-left: -328px;
+}
+
+th
+{
+  color: white;
+}
+
+#panellogin
+{
+  margin-top: 30px;
+}
+
+#panelRegistro
+{
+  margin-top: 100px;
+}
+
+#CTlogRes
+{
+  color: white;
+  font-size: 18px;
+}
+
+#inputLoRe
+{
+  width: 385px;
+  height: 45px;
+}
+
+#btnLogin
+{
+  margin-right: 404px;
+  font-size: 16px;
+}
+
+.lead
+{
+  color: white;
+}
+
+.cover-heading
+{
+  color: white;
 }
 
 .site-wrapper {
