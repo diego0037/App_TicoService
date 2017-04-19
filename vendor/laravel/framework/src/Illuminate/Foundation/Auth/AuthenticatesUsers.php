@@ -28,6 +28,11 @@ trait AuthenticatesUsers
     public function login(Request $request)
     {
         $this->validateLogin($request);
+        $data=$this->ActivatedValidator($request);
+        if (!$data) {
+          flash('Verifique su bandeja de correos para activar su cuenta. Su cuenta no esta activa' ,'danger');
+          return view('auth.login');
+        }
 
         // If the class is using the ThrottlesLogins trait, we can automatically throttle
         // the login attempts for this application. We'll key this by the username and
