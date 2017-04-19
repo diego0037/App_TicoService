@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Collaborator;
 use App\User;
 use App\Service;
-use App\Comment;
 use JWTAuth;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
@@ -53,12 +52,19 @@ class CollaboratorController extends Controller
     }
 
     public function anotherColl(array $coll){
+      Collaborator::create([
+        'id_user' => $coll['id_user'],
+        'id_service' => $coll['id_service'],
+        'availability' => $coll['availability'],
+        'description' => $coll['description'],
+      ]);
       $collaborator = new Collaborator();
-      $collaborator->id_user = $coll['id_user'];
-      $collaborator->id_service = $coll['id_service'];
-      $collaborator->availability = $coll['availability'];
-      $collaborator->description = $coll['description'];
-      $collaborator->save();
+      $collaborator->id_user = $coll->id_user;
+      $collaborator->id_service = $coll->id_service;
+      $collaborator->availability = $coll->availability;
+      $collaborator->description = $coll->description;
+      dd($collaborator);
+      // $collaborator->save();
     }
 
     public function storeFromService($id)
@@ -67,12 +73,10 @@ class CollaboratorController extends Controller
       $service = Service::find($id);
       $collaborator = DB::table('collaborators')->where('id_user', $user->id)->first();
       if($collaborator){
-        //si el colaborador existe
         $oldColl = array('id_user' => $user->id, 'id_service' => $service->id,
             'availability' => $collaborator->availability, 'description' => $collaborator->description);
         $this->anotherColl($oldColl);
       }else {
-        //si el colaborador no existe
         $collaborator = new Collaborator();
         $collaborator->id_user = $user->id;
         $collaborator->id_service = $service->id;
@@ -80,8 +84,8 @@ class CollaboratorController extends Controller
         $collaborator->availability = '';
         $collaborator->save();
       }
-      flash('Servicio Añadido!' ,'success');
-      return redirect('collaborators');
+      // flash('Servicio Añadido!' ,'success');
+      return view('PaginasWeb.busqueda');
 
         // $user = JWTAuth::parseToken()->toUser();
         // return response()->json(['collaborator' => $collaborator], 201);
@@ -95,13 +99,7 @@ class CollaboratorController extends Controller
      */
     public function show($id)
     {
-        // $comments = Comment::all();
-        $comments = DB::table('comments')->where('id_user_collab', 13)->get();
-        foreach ($comments as $key) {
-          $user = User::find($key->id_user_comm);
-          $key->user = $user->name;
-          $key->last = $user->last_name;
-        }
+
         $collaborator = Collaborator::find($id);
         $user = User::find($collaborator->id_user);
         $service = Service::find($collaborator->id_service);
@@ -113,7 +111,7 @@ class CollaboratorController extends Controller
         //     return response()->json(['message' => 'Colaborador no existente'], 404);
         // }
         // return response()->json($collaborator,200);
-        return view('PaginasWeb.colaborador', ['collaborator' => $collaborator, 'comments' => $comments]);
+        return view('PaginasWeb.colaborador', ['collaborator' => $collaborator]);
         // ->with('colaborator', $collaborator);
     }
 

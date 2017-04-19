@@ -134,7 +134,7 @@ class UserController extends Controller
             if ($user->is_activated ==1){
                 // return response()->json(['error'=>array(['code'=>422,'message'=>'Su cuenta ya esta activada.No podemos activarla de nuevo'])],422);
                 flash('Su cuenta ya esta activada.No podemos activarla de nuevo','warning');
-                return view('PaginasWeb.login');
+                return view('auth.login');
 
             }
 
@@ -143,11 +143,11 @@ class UserController extends Controller
             // return response()->json(['code'=>'201','mensaje'=>'Su cuenta fue activa'],201);
 
             flash('Su cuenta fue activa!' ,'success');
-            return view('PaginasWeb.login');
+            return view('auth.login');
         }
         // return response()->json(['error'=>array(['code'=>422,'message'=>'Su codigo es invalido.'])],422);
         flash('Su codigo es invalido' ,'danger');
-        return view('PaginasWeb.login');
+        return view('auth.login');
     }
 
     /**

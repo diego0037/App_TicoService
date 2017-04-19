@@ -32,10 +32,11 @@ trait RegistersUsers
 
         event(new Registered($user = $this->create($request->all())));
 
-        $this->guard()->login($user);
-
-        return $this->registered($request, $user)
-                        ?: redirect($this->redirectPath());
+        // $this->guard()->login($user);
+flash('Usuario creado exitosamente! Verifique su bandeja de Correos','success');
+return view('auth.login');
+        // return $this->registered($request, $user)
+        //                 ?: redirect($this->redirectPath());
     }
 
     /**
