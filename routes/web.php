@@ -61,7 +61,7 @@ Route::group(['prefix' => ''], function (){
   ]);
 
   Route::post('collaborator',[
-      'uses' => 'CollaboratorController@storeFromService'
+      'uses' => 'CollaboratorController@store'
   ]);
 
   Route::post('comment',[
