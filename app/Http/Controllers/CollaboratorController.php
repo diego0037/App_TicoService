@@ -99,6 +99,7 @@ class CollaboratorController extends Controller
      */
     public function show($id)
     {
+
         $collaborator = Collaborator::find($id);
         $user = User::find($collaborator->id_user);
         $service = Service::find($collaborator->id_service);
