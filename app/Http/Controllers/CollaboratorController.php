@@ -95,7 +95,6 @@ class CollaboratorController extends Controller
      */
     public function show($id)
     {
-        // $comments = Comment::all();
         $comments = DB::table('comments')->where('id_user_collab', $id)->get();
         foreach ($comments as $key) {
           $user = User::find($key->id_user_comm);
