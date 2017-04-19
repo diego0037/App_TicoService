@@ -25,13 +25,12 @@
 
 <div class="col-md-2"></div>
 <div class="col-md-8">
+  @include('flash::message')
   <table class="table table-striped">
    <thead>
      <tr>
        <th>COLABORADOR</th>
        <th>SERVICIO</th>
-       <!-- <th>DISPONIBILIDAD</th> -->
-       <!-- <th>DESCRIPCIÓN</th> -->
        <th>ACCIONES</th>
      </tr>
    </thead>
