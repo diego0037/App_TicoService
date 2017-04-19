@@ -11,12 +11,6 @@
 |
 */
 
-
-
-Route::get('/', function () {
-    return view('PaginasWeb.busqueda', ['name' => session('name')]);
-});
-
 Route::get('/user/activation/{token}',
 'UserController@userActivation');
 
@@ -70,8 +64,10 @@ Route::group(['prefix' => ''], function (){
 
 });
 
+Route::group(['prefix' => 'service'], function (){
 
+  Route::get('/collaboratorService/{id}',[
+      'uses' => 'CollaboratorController@storeFromService'
+  ])->middleware('auth');
 
-Route::get('/collaboratorService/{id}',[
-    'uses' => 'CollaboratorController@storeFromService'
-])->middleware('auth');
+});

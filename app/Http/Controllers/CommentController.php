@@ -42,7 +42,7 @@ class CommentController extends Controller
       $comment->comment = $request->comment;
       $comment->save();
       return redirect()->action(
-        'CollaboratorController@show', ['id' => 1]
+        'CollaboratorController@show', ['id' => $request->coll_id]
       )->with('status', 'Comentario Realizado!');
 
       // $this->validate($request, [
