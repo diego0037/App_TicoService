@@ -34,23 +34,26 @@ class CommentController extends Controller
     public function store(Request $request)
     {
 
-        $this->validate($request, [
-            'comment' => 'required',
-        ]);
-        $user_comm = JWTAuth::parseToken()->toUser();
-        //$user = User::find($request->input('id_user_comm'));
-        $id_receive = $request->input('id_collab');
+        // $this->validate($request, [
+        //     'comment' => 'required',
+        // ]);
+        // $user_comm = JWTAuth::parseToken()->toUser();
+        // //$user = User::find($request->input('id_user_comm'));
+        // $id_receive = $request->input('id_collab');
+        //
+        // if(!$user_comm || !$id_receive){
+        //     return response()->json(['message' => 'Error en registro de comentario'], 404);
+        // }
+        //
+        // $comment = new Comment();
+        // $comment->comment = $request->input('comment');
+        // $comment->id_user_comm = $user_comm->id;
+        // $comment->id_user_collab = $request->input('id_collab');
+        // $comment->save();
+        // return response()->json(['comment' => $comment], 200);
 
-        if(!$user_comm || !$id_receive){
-            return response()->json(['message' => 'Error en registro de comentario'], 404);
-        }
 
-        $comment = new Comment();
-        $comment->comment = $request->input('comment');
-        $comment->id_user_comm = $user_comm->id;
-        $comment->id_user_collab = $request->input('id_collab');
-        $comment->save();
-        return response()->json(['comment' => $comment], 200);
+        
     }
 
     /**

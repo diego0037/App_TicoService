@@ -35,7 +35,7 @@
                     </button>
 
                     <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
+                    <a class="navbar-brand" href="{{ url('busqueda') }}">
                       TicoService
                     </a>
                 </div>
@@ -48,6 +48,9 @@
 
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
+                      <li><a href="collaborators">Colaboradores</a></li>
+                      <li><a href="services">Servicios</a></li>
+
                         <!-- Authentication Links -->
                         @if (Auth::guest())
                             <li><a href="{{ route('login') }}">Iniciar Sesión</a></li>
