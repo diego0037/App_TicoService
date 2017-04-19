@@ -82,13 +82,14 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th>COMENTARIOS</th>
+      <th>USUARIO</th>
+      <th>COMENTARIO</th>
     </tr>
   </thead>
   <tbody>
     <?php
       foreach ($comments as $key) {
-        echo "<tr><td>".$key->comment."</td></tr>";
+        echo "<tr><td>".$key->user.' '.$key->last."</td><td>".$key->comment."</td></tr>";
       }
      ?>
   </tbody>
