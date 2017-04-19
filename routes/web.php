@@ -33,14 +33,45 @@ Route::get('busqueda', function(){
       return view('PaginasWeb.busqueda');
 });
 
-Route::get('collaborator', function(){
-      return view('PaginasWeb.colaborador');
-});
+// Route::get('collaborator', function(){
+//       return view('PaginasWeb.colaborador');
+// });
 
-Route::get('registroServicio', function(){
-      return view('PaginasWeb.registroServicio', ['token' => session('token')]);
-});
+// Route::get('registroServicio', function(){
+//       return view('PaginasWeb.registroServicio', ['token' => session('token')]);
+// });
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index');
+Route::group(['prefix' => ''], function (){
+  Route::get('service/{id}',[
+      'uses' => 'ServiceController@show'
+  ]);
+
+  Route::get('collaborator/{id}',[
+      'uses' => 'CollaboratorController@show'
+  ]);
+
+  Route::get('services',[
+      'uses' => 'ServiceController@index'
+  ]);
+
+  Route::get('collaborators',[
+      'uses' => 'CollaboratorController@index'
+  ]);
+
+  Route::post('collaborator',[
+      'uses' => 'CollaboratorController@store'
+  ]);
+
+  Route::post('comment',[
+      'uses' => 'CommentController@store'
+  ]);
+
+});
+
+
+
+Route::get('/collaboratorService/{id}',[
+    'uses' => 'CollaboratorController@storeFromService'
+])->middleware('auth');

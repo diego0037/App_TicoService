@@ -6,33 +6,30 @@
 
 @section('content')
 
-{{ Form::open(array('url' => 'api/user/login', 'method' => 'POST'), array('role' => 'form')) }}
-<div class="row">
-<div class="form-group  col-md-offset-3 col-md-4 ">
-
-  {{ Form::text('search', null, array('placeholder' => 'Introduce tu Busqueda', 'class' => 'form-control')) }}
-</div>
-
-<div class="form-group  col-md-offset-1 col-md-1 col-md-offset-3">
-{{ Form::button('Busqueda', array('type' => 'submit', 'class' => 'btn btn-primary')) }}
-</div>
-</div>
-{{ Form::close() }}
-
 <div class="site-wrapper">
   <div class="site-wrapper-inner">
+    {{ Form::open(array('url' => 'api/user/login', 'method' => 'POST'), array('role' => 'form')) }}
+    <div class="row">
+      <div class="form-group  col-md-offset-3 col-md-4 ">
+
+        {{ Form::text('search', null, array('placeholder' => 'Introduce tu Busqueda', 'class' => 'form-control')) }}
+      </div>
+
+      <div class="form-group  col-md-offset-1 col-md-1 col-md-offset-3">
+        {{ Form::button('Busqueda', array('type' => 'submit', 'class' => 'btn btn-primary')) }}
+      </div>
+    </div>
+    {{ Form::close() }}
+
     <div class="cover-container">
 
+      <h1 class="cover-heading">TicoService</h1>
+      <p class="lead">Tico Service es una aplicación que te permite buscar
+        el servicio que desees, además, Tico Service te permite publicar tus
+        servicios para que otras personas puedan contactarte, también ten en
+        cuenta que vas a poder comentar a la persona que te brindó
+        el servicio para que otras personas puedan obtener cierta referencia</p>
       <div class="inner cover">
-        <h1 class="cover-heading">TicoService</h1>
-
-        <p class="lead">Tico Service es una aplicación que te permite buscar
-          el servicio que desees, además, Tico Service te permite publicar tus
-          servicios para que otras personas puedan contactarte, también ten en
-          cuenta que vas a poder comentar a la persona que te brindó
-          el servicio para que otras personas puedan obtener cierta referencia
-        </p>
-
       </div>
 
       <div class="accordian">
@@ -101,7 +98,4 @@
     </div>
 </div>
 </div>
-
-
-
 @endsection

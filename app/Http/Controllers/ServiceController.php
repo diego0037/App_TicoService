@@ -56,7 +56,8 @@ class ServiceController extends Controller
         if(!$service){
             return response()->json(['message' => 'Servicio no existente'], 404);
         }
-        return response()->json($service,200);
+        // return response()->json($service,200);
+        return view('PaginasWeb.service', ['service' => $service]);
     }
     /**
      * Update the specified resource in storage.

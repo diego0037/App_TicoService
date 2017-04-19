@@ -39,13 +39,11 @@ Route::patch('/user/{id}',[
     'middleware' => 'auth.jwt'
 ]);
 
-Route::get('/services',[
-    'uses' => 'ServiceController@index'
-]);
 
-Route::get('/service/{id}',[
-    'uses' => 'ServiceController@show'
-]);
+
+// Route::get('/service/{id}',[
+//     'uses' => 'ServiceController@show'
+// ]);
 
 Route::post('/service',[
     'uses' => 'ServiceController@store'
@@ -55,7 +53,6 @@ Route::patch('/service/{id}',[
     'uses' => 'ServiceController@update',
     'middleware' => 'auth.jwt'
 ]);
-
 
 Route::get('/comments',[
     'uses' => 'CommentController@index'
@@ -74,15 +71,21 @@ Route::patch('/comment/{id}',[
     'middleware' => 'auth.jwt'
 ]);
 
+// Route::group(['prefix' => 'api'], function(){
+//   Route::get('services',[
+//       'uses' => 'ServiceController@index'
+//   ]);
+//
+//   Route::get('collaborators',[
+//       'uses' => 'CollaboratorController@index'
+//   ]);
+// });
 
 
-Route::get('/collaborators',[
-    'uses' => 'CollaboratorController@index'
-]);
 
-Route::get('/collaborator/{id}',[
-    'uses' => 'CollaboratorController@show'
-]);
+// Route::get('/collaborator/{id}',[
+//     'uses' => 'CollaboratorController@show'
+// ]);
 
 Route::post('/collaborator',[
     'uses' => 'CollaboratorController@store'
