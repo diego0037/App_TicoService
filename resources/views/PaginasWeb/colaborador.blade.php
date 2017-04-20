@@ -41,11 +41,32 @@
           <h4 class="modal-title">Comentario</h4>
         </div>
         <div class="modal-body">
-          <textarea class="form-control" name="comment" rows="3"></textarea>
+
+          {{ Form::open(array('url' => 'comment', 'method' => 'POST'), array('role' => 'form')) }}
+
+          <div class="row">
+          <div class="form-group col-md-12">
+            {{ Form::textarea('comment', null, array('class' => 'form-control')) }}
+          </div>
+          </div>
+
+          <div class="row">
+          <div hidden class="form-group  col-md-offset-4 col-md-4 col-md-offset-4">
+            {{ Form::text('coll_id', Request::segment(2), array('class' => 'form-control')) }}
+          </div>
+          </div>
+
+          <div class="row">
+          <div class="form-group col-md-offset-4 col-md-4 col-md-offset-4">
+
+          {{ Form::button('Publica mi Comentario', array('type' => 'submit', 'class' => 'btn btn-primary')) }}
+          </div>
+          </div>
+          {{ Form::close() }}
           <p>Procura que tu comentario no dañe la integridad del colaborador</p>
         </div>
-        <div class="modal-footer">
-          <a href='comment/$service->id' role='button' class='btn btn-success'>Guardar</a>
+        <div hidden class="modal-footer">
+          <input type="text" name="" value="">
         </div>
       </div>
 
@@ -54,7 +75,14 @@
 
 </div>
 
+
+
 <table class="table table-striped">
+    @if (session('status'))
+      <div class="alert alert-success">
+          {{ session('status') }}
+      </div>
+    @endif
   <thead>
     <tr>
       <th>USUARIO</th>
