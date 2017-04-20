@@ -6,6 +6,8 @@ use App\Comment;
 use App\User;
 use App\Collaborator;
 use Illuminate\Http\Request;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Auth;
 use JWTAuth;
 use DB;
 
@@ -33,10 +35,19 @@ class CommentController extends Controller
      */
     public function store(Request $request)
     {
+      $user = Auth::user();
+      $comment = new Comment();
+      $comment->id_user_comm = $user->id;
+      $comment->id_user_collab = $request->coll_id;
+      $comment->comment = $request->comment;
+      $comment->save();
+      return redirect()->action(
+        'CollaboratorController@show', ['id' => 1]
+      )->with('status', 'Comentario Realizado!');
 
-        // $this->validate($request, [
-        //     'comment' => 'required',
-        // ]);
+      // $this->validate($request, [
+      //     'comment' => 'required',
+      // ]);
         // $user_comm = JWTAuth::parseToken()->toUser();
         // //$user = User::find($request->input('id_user_comm'));
         // $id_receive = $request->input('id_collab');
@@ -51,9 +62,6 @@ class CommentController extends Controller
         // $comment->id_user_collab = $request->input('id_collab');
         // $comment->save();
         // return response()->json(['comment' => $comment], 200);
-
-
-        
     }
 
     /**
