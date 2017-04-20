@@ -14,9 +14,18 @@ body {
 
 }
 
+#tablaService
+{
+  margin-top: 23px;
+}
 #navBarPrincipal
 {
   margin-bottom: 0pc;
+}
+
+#panelServicio
+{
+  background: yellowgreen;
 }
 
 #inputBusqueda
