@@ -5,8 +5,8 @@
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 
 @section('content')
-<div class="site-wrapper">
-  <div class="site-wrapper-inner">
+<div class="container">
+
 
 <div class="col-md-2"></div>
 <div class="col-md-8">
@@ -23,5 +23,6 @@
  </table>
 
 </div>
+
 </div>
-</div>
+@endsection

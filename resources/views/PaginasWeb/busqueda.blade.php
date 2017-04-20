@@ -12,11 +12,11 @@
     <div class="row">
       <div class="form-group  col-md-offset-3 col-md-4 ">
 
-        {{ Form::text('search', null, array('placeholder' => 'Introduce tu Busqueda', 'class' => 'form-control')) }}
+        {{ Form::text('search', null, array('placeholder' => 'Introduce tu Busqueda', 'class' => 'form-control','id' => 'inputBusqueda')) }}
       </div>
 
       <div class="form-group  col-md-offset-1 col-md-1 col-md-offset-3">
-        {{ Form::button('Busqueda', array('type' => 'submit', 'class' => 'btn btn-primary')) }}
+        {{ Form::button('Busqueda', array('type' => 'submit', 'class' => 'btn btn-primary', 'id' => 'btnBusqueda')) }}
       </div>
     </div>
     {{ Form::close() }}
@@ -24,12 +24,19 @@
     <div class="cover-container">
 
       <h1 class="cover-heading">TicoService</h1>
-      <p class="lead">Tico Service es una aplicación que te permite buscar
-        el servicio que desees, además, Tico Service te permite publicar tus
-        servicios para que otras personas puedan contactarte, también ten en
-        cuenta que vas a poder comentar a la persona que te brindó
-        el servicio para que otras personas puedan obtener cierta referencia</p>
+
       <div class="inner cover">
+        <div class="row">
+          <div class="col-md-offset-1 col-md-10 col-md-offset-1">
+
+        <p class="lead">Tico Service es una aplicación que te permite buscar
+          el servicio que desees, además, Tico Service te permite publicar tus
+          servicios para que otras personas puedan contactarte, también ten en
+          cuenta que vas a poder comentar a la persona que te brindó
+          el servicio para que otras personas puedan obtener cierta referencia
+        </p>
+          </div>
+        </div>
       </div>
 
       <div class="accordian">
